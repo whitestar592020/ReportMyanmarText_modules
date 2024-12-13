@@ -3,10 +3,12 @@ from odoo import api, fields, models, tools, SUPERUSER_ID, _
 from odoo.exceptions import UserError, AccessError
 from odoo.tools.misc import find_in_path, ustr
 from odoo.http import request
+import logging 
 import os
 import tempfile
 import subprocess
 from contextlib import closing
+_logger = logging.getLogger(__name__)
 
 def _get_wkhtmltopdf_bin():
     return find_in_path('wkhtmltopdf')
