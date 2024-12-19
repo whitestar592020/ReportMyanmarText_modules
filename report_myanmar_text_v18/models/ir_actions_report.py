@@ -11,6 +11,7 @@ import subprocess
 from contextlib import closing
 _logger = logging.getLogger(__name__)
 
+
 def _get_wkhtmltopdf_bin():
     return find_in_path('wkhtmltopdf')
 
@@ -186,7 +187,7 @@ class IrActionsReport(models.Model):
                 else:
                     html_list[i - 1], html_list[i] = html_list[i], html_list[i - 1]
 
-        # Step 2: Character sustitutions
+        # Step 2: Substitute the characters
         #########
         # 'YaYit' character substitutions
         for i, v in enumerate(html_list):
@@ -224,14 +225,15 @@ class IrActionsReport(models.Model):
                     html_list[i] = '\uE037'
                 if html_list[i - 1] == '\u1014' or html_list[i - 2] == '\u1014':
                     html_list[i] = '\uE037'
-                if html_list[i - 1] == '\u101B' or html_list[i - 2] == '\u101B' or html_list[i - 3] == '\u101B':
-                    html_list[i] = '\uE137'
-                if html_list[i - 1] in ['\uE2F1', '\uE2F2']:
-                    html_list[i] = '\uE137'
-                if html_list[i - 1] == '\u103D' or html_list[i - 2] == '\u103D':
+                if html_list[i - 1] in ['\uE2F1', '\uE2F2', '\u103D']:
                     html_list[i] = '\uE137'
                 if html_list[i - 1] == '\u103B' or html_list[i - 2] == '\u103B':
                     html_list[i] = '\uE137'
+                if html_list[i - 1] == '\u103E' or html_list[i - 2] == '\u103E':
+                    if html_list[i - 3] == '\u101B':
+                        html_list[i] = '\uE137'
+                    else:
+                        html_list[i] = '\uE037'
             if v == '\u103E':
                 if html_list[i - 2] in ['\u103C', '\uE1B2']:
                     html_list[i] = '\uE1F3'
@@ -323,7 +325,7 @@ class IrActionsReport(models.Model):
                     if html_list[i + 2] == '\u1030': html_list[i + 2] = '\uE2F2'
                     if html_list[i - 1] == '\u1014': html_list[i - 1] = '\uE107'
 
-        # 'KinSi' variant substitutions
+        # 'KinZi' variant substitutions
         for i, v in enumerate(html_list):
             if v == '\uE390':
                 if html_list[i + 1] == '\u103B':
