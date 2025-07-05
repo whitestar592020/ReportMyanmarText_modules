@@ -18,6 +18,12 @@ def _get_wkhtmltopdf_bin():
 class IrActionsReport(models.Model):
     _inherit = 'ir.actions.report'
 
+    def _get_layout(self):
+        layout = self.env.ref('web.minimal_layout', False)
+        if not layout:
+            return None
+        return self.env['ir.ui.view'].browse(self.env['ir.ui.view'].get_view_id('web.minimal_layout'))
+
     def _get_report_url(self, layout=None):
         report_url = self.env['ir.config_parameter'].sudo().get_param('report.url')
         return report_url or (layout or self._get_layout() or self).get_base_url()
