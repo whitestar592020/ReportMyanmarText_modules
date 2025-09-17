@@ -369,7 +369,12 @@ class IrActionsReport(models.Model):
                     if html_list[i + 1] == '\u1016': html_list[i], html_list[i + 1] = '\uE016', ''
                     if html_list[i + 1] == '\u1017': html_list[i], html_list[i + 1] = '\uE017', ''
                     if html_list[i + 1] == '\u1018': html_list[i], html_list[i + 1] = '\uE018', ''
-                    if html_list[i + 1] == '\u1019': html_list[i], html_list[i + 1] = '\uE019', ''
+
+                    if html_list[i + 1] == '\u1019':
+                        if html_list[i + 2] == '\u1031':
+                            html_list[i], html_list[i + 1], html_list[i + 2] = '\u1031', '\uE019', ''
+                        else:
+                            html_list[i], html_list[i + 1] = '\uE019', ''
 
                     if html_list[i + 1] == '\u101C': html_list[i], html_list[i + 1] = '\uE01C', ''
                     if html_list[i + 1] == '\u101E': html_list[i], html_list[i + 1] = '\uE01E', ''
