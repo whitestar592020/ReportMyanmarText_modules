@@ -118,7 +118,6 @@ class IrActionsReport(models.Model):
                     body = self._myanmar_text_reshaper(body)
                     body_file.write(body.encode())
                 else:
-                    print("Place B")
                     # Reshape the Myanmar text for PDF report
                     body = self._myanmar_text_reshaper(body)
                     tree = lxml.html.fromstring(body)
