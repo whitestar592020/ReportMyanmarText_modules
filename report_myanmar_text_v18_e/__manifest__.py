@@ -13,10 +13,11 @@
     "depends": ["base"],
     "assets": {
         "web.report_assets_common": [
-            "/report_myanmar_text_v18/static/src/scss/font.scss",
+            "/report_myanmar_text_v18_e/static/src/scss/font.scss",
         ],
         "account_reports.assets_pdf_export": [
-            "/report_myanmar_text_v18/static/src/scss/font.scss",
+            "/report_myanmar_text_v18_e/static/src/scss/font.scss",
         ]
     }
 }
+
