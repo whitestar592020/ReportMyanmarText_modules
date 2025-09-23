@@ -209,6 +209,8 @@ class IrActionsReport(models.Model):
             if v == '\u103E':
                 if html_list[i - 2] in ['\u103C', '\uE1B2']:
                     html_list[i] = '\uE1F3'
+            if v == '\u1009':
+                html_list[i] = '\uE009'
 
         # Two-to-One character substitutions
         for i, v in enumerate(html_list):
