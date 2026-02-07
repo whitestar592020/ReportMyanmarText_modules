@@ -309,6 +309,11 @@ class IrActionsReport(models.Model):
                     if html_list[i + 1] == '\u101F': html_list[i], html_list[i + 1] = '\uE553', ''
                     if html_list[i + 1] == '\u1021': html_list[i], html_list[i + 1] = '\uE021', ''
 
+                    if html_list[i - 1] not in ['\u1000', '\u1003', '\u1006', '\u100F', '\u1010', '\u1011',
+                                                '\u1018', '\u101A', '\u101C', '\u101E', '\u101F', '\u1021']:
+                        if html_list[i] == '\uE010': html_list[i] = '\uE01F'
+                        if html_list[i] == '\uE011': html_list[i] = '\uE020'
+
                     if html_list[i + 2] == '\u102F': html_list[i + 2] = '\uE2F1'
                     if html_list[i + 2] == '\u1030': html_list[i + 2] = '\uE2F2'
                     if html_list[i - 1] == '\u1014': html_list[i - 1] = '\uE107'
