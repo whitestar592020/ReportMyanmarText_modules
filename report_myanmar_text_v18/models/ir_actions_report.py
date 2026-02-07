@@ -180,7 +180,9 @@ class IrActionsReport(models.Model):
         # Reorder the 'ThaWaiHtoo' character
         for i, v in enumerate(html_list):
             if v == '\u1031':
-                if html_list[i - 1] in ['\u103B', '\u103C', '\u103D', '\u103E', '\u101B']:
+                if html_list[i - 1] == '\u101B':
+                    html_list[i - 1], html_list[i] = '\u001D\u1031', '\u101B'
+                if html_list[i - 1] in ['\u103B', '\u103C', '\u103D', '\u103E']:
                     html_list[i - 1], html_list[i] = html_list[i], html_list[i - 1]
                     if html_list[i - 2] in ['\u103B', '\u103C', '\u103D', '\u103E']:
                         html_list[i - 2], html_list[i - 1] = html_list[i - 1], html_list[i - 2]
