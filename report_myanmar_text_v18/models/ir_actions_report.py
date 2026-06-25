@@ -225,10 +225,18 @@ class IrActionsReport(models.Model):
                     html_list[i] = '\uE2F1'
                 if html_list[i - 2] in ['\u103C', '\uE1B2'] or html_list[i - 3] in ['\u103C', '\uE1B2']:
                     html_list[i] = '\uE2F1'
+                special_characters = ['\u1008', '\u1009', '\u100A', '\u100B', '\u100C', '\u100D', '\u1020', '\u1023',
+                                      '\u1025', '\u1026', '\uE009', '\uE100', '\uE101', '\uE10A', '\uE103', '\uE105']
+                if html_list[i - 1] in special_characters or html_list[i - 2] in special_characters:
+                    html_list[i] = '\uE2F1'
             if v == '\u1030':
                 if html_list[i - 1] == '\u103B' or html_list[i - 2] == '\u103B':
                     html_list[i] = '\uE2F2'
                 if html_list[i - 2] in ['\u103C', '\uE1B2'] or html_list[i - 3] in ['\u103C', '\uE1B2']:
+                    html_list[i] = '\uE2F2'
+                special_characters = ['\u1008', '\u1009', '\u100A', '\u100B', '\u100C', '\u100D', '\u1020', '\u1023',
+                                      '\u1025', '\u1026', '\uE009', '\uE100', '\uE101', '\uE10A', '\uE103', '\uE105']
+                if html_list[i - 1] in special_characters or html_list[i - 2] in special_characters:
                     html_list[i] = '\uE2F2'
             if v == '\u1037':
                 if html_list[i - 1] in ['\u102F', '\u1030']:
