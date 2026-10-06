@@ -302,6 +302,9 @@ class IrActionsReport(models.Model):
                         html_list[i], html_list[i + 1], html_list[i + 2] = '\uE1B6', html_list[i + 2], html_list[i]
                     elif html_list[i + 1] == '\uE1B2':
                         html_list[i], html_list[i + 1], html_list[i + 2] = '\uE1B7', html_list[i + 2], html_list[i]
+                    elif html_list[i + 2] == '\u1031': # this condition has update due to သင်္ဘော၊ င်္ော ပါသော words များ
+                        html_list[i], html_list[i+1], html_list[i + 2] = html_list[i + 1], html_list[i+2], html_list[i]
+
                     else:
                         html_list[i], html_list[i + 1] = html_list[i + 1], html_list[i]
                 else:
